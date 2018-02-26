@@ -2,8 +2,11 @@
 # Feb 25, 2018
 # Some math for video about distance between planets
 
+import sys
+
 # constants for objects
 d_from_s_mercury  = 57.91e9            # m
+d_from_s_venus    = 108.2e9            # m
 d_from_s_earth    = 149.6e9            # m
 d_from_s_mars     = 227.9e9            # m
 d_from_s_jupiter  = 778.5e9            # m
@@ -15,7 +18,7 @@ sphere_size       = 24e-2              # m, basketball
 solar_radius      = 695.7e6            # m
 
 # ask which planet?
-choice = input('Which object would you like? (M V E M A J S U N P E): ')
+choice = input('Which object would you like? ')
 
 # by default...
 distance_from_sun = d_from_s_earth
@@ -23,6 +26,8 @@ distance_from_sun = d_from_s_earth
 # choose object
 if choice.lower() == 'mercury':
     distance_from_sun = d_from_s_mercury
+elif choice.lower() == 'venus':
+    distance_from_sun = d_from_s_venus
 elif choice.lower() == 'earth':
     distance_from_sun = d_from_s_earth
 elif choice.lower() == 'mars':
@@ -35,6 +40,7 @@ elif choice.lower() == 'pluto':
     distance_from_sun = d_from_s_pluto
 else:
     print( '{} was not a valid option'.format(choice) )
+    sys.exit()
 
 # compute
 res    = distance_from_sun / (2 * solar_radius) * sphere_size # m
